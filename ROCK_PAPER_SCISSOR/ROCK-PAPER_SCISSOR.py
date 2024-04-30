@@ -38,9 +38,9 @@ class RockPaperScissorApp:
     def shoot(self,pm):
         plr_move = pm
         com_move = random.randrange(1,4)
-        self.img_rock = tk.PhotoImage(file="rock_resized.png")
-        self.img_paper = tk.PhotoImage(file="paper_resized.png")
-        self.img_scissor = tk.PhotoImage(file="scissor_resized.png")
+        self.img_rock = tk.PhotoImage(file=r"C:\Users\Lenovo\Desktop\Programing\python\CodeSoft\ROCK_PAPER_SCISSOR\rock_resized.png")
+        self.img_paper = tk.PhotoImage(file=r"C:\Users\Lenovo\Desktop\Programing\python\CodeSoft\ROCK_PAPER_SCISSOR\paper_resized.png")
+        self.img_scissor = tk.PhotoImage(file=r"C:\Users\Lenovo\Desktop\Programing\python\CodeSoft\ROCK_PAPER_SCISSOR\scissor_resized.png")
 
         if com_move == 1 :
             self.computer_move.configure(image=self.img_rock)
@@ -120,14 +120,14 @@ class RockPaperScissorApp:
             x=20,
             y=36)
         self.computer_move = ttk.Label(self.game_frame)
-        self.img_com_resized = tk.PhotoImage(file="com_resized.png")
+        self.img_com_resized = tk.PhotoImage(file=r"C:\Users\Lenovo\Desktop\Programing\python\CodeSoft\ROCK_PAPER_SCISSOR\com_resized.png")
         self.computer_move.configure(
             background="#ffffff",
             image=self.img_com_resized)
         self.computer_move.place(
             anchor="nw", height=100, width=100, x=20, y=130)
         self.players_move = ttk.Label(self.game_frame)
-        self.img_hum = tk.PhotoImage(file="hum.png")
+        self.img_hum = tk.PhotoImage(file=r"C:\Users\Lenovo\Desktop\Programing\python\CodeSoft\ROCK_PAPER_SCISSOR\hum.png")
         self.players_move.configure(background="#ffffff", image=self.img_hum)
         self.players_move.place(
             anchor="nw",
