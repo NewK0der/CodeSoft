@@ -28,7 +28,7 @@ class NewprojectApp:
             # build ui
             self.main_frame = tk.Tk() if master is None else tk.Toplevel(master)
             self.main_frame.configure(background="#000000", height=350, width=235)
-            self.main_frame.title("calculator")
+            self.main_frame.title("Calculator")
             self.main_frame.resizable(False, False)
             self.display = ttk.Label(self.main_frame)
             self.display.configure(
