@@ -71,11 +71,13 @@ class ContactBookApp:
         data=cur.fetchall()
         con.commit()
         con.close()
+        self.contact_list.configure(state="normal") 
         if len(data) > 0:
             self.contact_list.delete("1.0","10.0")
             for i in data:
                 for j in i:
                     self.contact_list.insert(tk.INSERT,(j+'\n'))
+        self.contact_list.configure(state="disabled") 
 
     #to add contact in the database               
     def contact_added(self):
