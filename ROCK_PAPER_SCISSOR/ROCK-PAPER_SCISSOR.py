@@ -5,7 +5,6 @@ import tkinter.messagebox
 from tkinter.messagebox import askyesno
 import random
 
-
 class RockPaperScissorApp:
     def close(self):
         ans = askyesno("ROCK PAPER SCISSOR","Are you sure you want to quit?")

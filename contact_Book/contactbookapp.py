@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter.scrolledtext import ScrolledText
@@ -54,6 +53,7 @@ class ContactBookApp:
             data=cur.fetchall()
             con.commit()
             con.close()
+            self.contact_list.configure(state="normal")
             if data != [] :
                 self.contact_list.delete("1.0","10000.0")
                 for i in data:
@@ -62,6 +62,7 @@ class ContactBookApp:
             else:
                 self.contact_list.delete("1.0","100.0")
                 self.contact_list.insert("0.0","No Contact")
+            self.contact_list.configure(state="disabled") 
                 
     # To get all the number present in database and show them on scrolled text.
     def show_contact(self):
