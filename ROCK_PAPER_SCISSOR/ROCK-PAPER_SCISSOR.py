@@ -208,6 +208,7 @@ class RockPaperScissorApp:
         self.computer_score.configure(
             background="#408080",
             font="{Arial Black} 12 {bold}",
+            foreground="#ffff00",
             justify="center",
             text='0')
         self.computer_score.place(
@@ -216,6 +217,7 @@ class RockPaperScissorApp:
         self.player_score.configure(
             background="#408080",
             font="{Arial Black} 12 {bold}",
+            foreground="#ffff00",
             justify="center",
             text='0')
         self.player_score.place(anchor="nw", height=25, width=25, x=255, y=232)
