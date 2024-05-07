@@ -43,14 +43,23 @@ class ContactBookApp:
         
             
     #allowing Update
-    def allow_update(self):
+    def allow_update(self,num):
         self.name.configure(state="normal")
         self.number.configure(state="normal")
         self.email.configure(state="normal")
         self.landmark.configure(state="normal")
         self.city.configure(state="normal")
         self.state.configure(state="normal")
-        self.done.configure(state="active",activebackground="#FFA500")
+
+        self.done = tk.Button(self.update_contact)     #update button - to update contact in database.
+        self.done.configure(
+            background="#FFA500",
+            borderwidth=0,
+            font="{Calibri} 16 {bold}",
+            foreground="#ffffff",
+            text="Update & Continue",
+            command = lambda:self.contact_updated(num))
+        self.done.place(anchor="nw", height=30, width=200, x=50, y=500)
         
     
     #to search the contact whenever any character is entered on search bar.
@@ -65,14 +74,14 @@ class ContactBookApp:
             con.commit()
             con.close()
 
-            data.sort(key=lambda a: a[0])
+            #data.sort(key=lambda a: a[0])
             for widget in self.scroll_frame.winfo_children():   #for deleting all Button present in frame
                 if isinstance(widget, tk.Button):
                     widget.destroy()
             
             if not data :
                 label = tk.Label(self.scroll_frame)
-                label.configure(font=("Times New Roman",24),
+                label.configure(font="{Times New Roman} 15 {bold}",
                             foreground="#000000",
                             text="No Contact")
                 label.place(height=40,width=300,x=0, y=0)
@@ -102,7 +111,7 @@ class ContactBookApp:
             self.search.insert("0","Search")
         con=ms.connect(host="localhost",database="ContactBook",user="root",passwd="12345")
         cur=con.cursor()
-        cur.execute('select name,number from contact_list;')
+        cur.execute('select * from contact_list order by insertion_timestamp desc;')
         data=cur.fetchall()
         con.commit()
         con.close()
@@ -141,7 +150,7 @@ class ContactBookApp:
                 return
             con=ms.connect(host="localhost",database="ContactBook",user="root",passwd="12345")
             cur=con.cursor()
-            cur.execute('insert into Contact_List values( "{}","{}","{}","{}","{}","{}");'.format(self.name.get(),self.number.get(),self.email.get(),self.landmark.get(),self.city.get(),self.state.get()))
+            cur.execute('insert into Contact_List (name,number,email,landmark,city,state) values( "{}","{}","{}","{}","{}","{}");'.format(self.name.get(),self.number.get(),self.email.get(),self.landmark.get(),self.city.get(),self.state.get()))
             con.commit()
             con.close()
             messagebox.showinfo("Message","Successfully Added.")
@@ -201,7 +210,7 @@ class ContactBookApp:
                                      background="#ffffff",
                                      font="{Calibri} 14 {}",
                                      foreground="#000000",
-                                     command=self.allow_update)
+                                     command=lambda:self.allow_update(var))
         self.setting.menu.add_command(label='Delete',
                                      background="#ffffff",
                                      font="{Calibri} 14 {}",
@@ -392,17 +401,6 @@ class ContactBookApp:
             text='←',
             command = self.open_contact_list)
         self.back.place(anchor="nw", height=30, width=30, x=0, y=0)
-        
-        self.done = tk.Button(self.update_contact)     #add button - to add contact in database.
-        self.done.configure(
-            background="#FFA500",
-            borderwidth=0,
-            font="{Calibri} 16 {bold}",
-            foreground="#ffffff",
-            text="Update & Continue",
-            state="disabled",
-            command = lambda:self.contact_updated(data[0][1]))
-        self.done.place(anchor="nw", height=30, width=200, x=50, y=500)
         
         self.update_contact.place(anchor="nw", height=550, width=300, x=0, y=0)
     
