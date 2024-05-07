@@ -99,9 +99,9 @@ class ContactBookApp:
                 text_list.append(button)
                 button.place(height=40,width=300,x=0, y=c*50)
                 if c*50 < 420 :
-                    self.scroll_frame.config(height=420,width=280)
+                    self.scroll_frame.config(height=470,width=280)
                 else :
-                    self.scroll_frame.config(height=c*50+10,width=280)
+                    self.scroll_frame.config(height=c*50+50,width=280)
                 c += 1 
                 
     # To get all the number present in database and show them on scrolled text.
@@ -137,9 +137,9 @@ class ContactBookApp:
             text_list.append(button)
             button.place(height=40,width=300,x=0, y=c*50)
             if c*50 < 420 :
-                self.scroll_frame.config(height=420,width=280)
+                self.scroll_frame.config(height=470,width=280)
             else :
-                self.scroll_frame.config(height=c*50+10,width=280)
+                self.scroll_frame.config(height=c*50+50,width=280)
             c += 1                
 
     #to add contact in the database               
